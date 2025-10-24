@@ -1,56 +1,86 @@
 
 #include "libft.h"
 
-int ft_atol(const char *str)
+/* Processa gli spazi iniziali e il segno.
+ *
+ * Questa funzione avanza l'indice *i nella stringa di input saltando
+ * i caratteri di spaziatura (spazio e caratteri di controllo tra 9 e 13).
+ * Poi controlla la presenza di un segno '+' o '-' e regola il segno di conseguenza.
+ * Separare la gestione degli spazi e del segno in una funzione dedicata
+ * migliora la modularità.
+ * 
+ * *i è usato come puntatore a una variabile indice così che la funzione possa
+ * aggiornare il valore dell'indice al di fuori del proprio scope. Questo permette
+ * alla funzione di ricordare fino a che punto ha processato la stringa (saltando
+ * spazi e gestendo il segno). */
+
+static int	ft_handle_sign_and_spaces(const char *str, int *i)
 {
-    int i;
-    int sign;
-    int res;
-
-/*
-i -> indice per scorrere la riga
-sign -> tiene traccia del segno del numero (1 per positivo, -1 per negativo)
-res -> accumula il risultato numerico 
-*/
-
-i = 0;
-res = 0;
-sign = 1;
-
-/*
-i parte da 0, res parte da 0 perche' iniziamo a costruire il numero
-sign e' inizialmente positivo
-*/
-
-while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-{
-    i++;
+	int	sign;
+	sign = 1;
+	while (str[*i] == 32 || (str[*i] >= 9 && str[*i] <= 13))
+		(*i)++;
+	if (str[*i] == '+' || str[*i] == '-')
+	{
+		if (str[*i] == '-')
+			sign *= -1;
+		(*i)++;
+	}
+	return (sign);
 }
 
-/*
-questo ciclo salta tutti i caratteri "bianchi" iniziali
-la condizione copre i caratteri di tab,newline,
-carriage return,vertical tab,form feed(codice ASCII 9-13)
-*/
+/* Converte i caratteri numerici in una stringa in un long integer.
+ *
+ * Questa funzione legge i caratteri dalla stringa partendo dall'indice
+ * puntato da *i, e accumula il loro valore numerico in un long.
+ * Si ferma quando incontra un carattere non-cifra.
+ *
+ * La funzione controlla anche potenziali overflow:
+ *   - Se viene rilevato un overflow e il segno è positivo,
+ *     ritorna LONG_MAX.
+ *   - Se negativo, ritorna LONG_MIN.
+ * 
+ * Questo approccio modulare alla conversione numerica separa l'effettiva
+ * logica di accumulo delle cifre dal parsing iniziale di segno e spazi.
+ * Permette al processo di conversione di essere riutilizzato in altri contesti
+ * gestendo l'overflow in maniera consistente. */
 
-if(str[i] == '+' || str[i] == '-')
+static long	ft_calculate_number(const char *str, int *i, int sign)
 {
-    if (str[i] == '-')
-        sign = -sign;
-    i++;
+	long	result;
+	result = 0;
+	while (str[*i] >= '0' && str[*i] <= '9')
+	{
+		if (result > (LONG_MAX - (str[*i] - '0') / 10))
+		{
+			if (sign == 1)
+				return (LONG_MAX);
+			else
+				return (LONG_MIN);
+		}
+		result = result * 10 + (str[*i] - '0');
+		(*i)++;
+	}
+	return (result);
 }
-/*
-questa parte gestisce il segno del numero dato,
-se e' negativo restituira' il numero intero moltiplicato
-per il segno,in modo da avere un risultato accurato 
-a livello di codice
-*/
 
-while (str[i] >= '0' && str[i] <= '9')
+/* Converte una stringa in un long integer.
+ *
+ * Questa funzione processa la stringa di input gestendo prima eventuali
+ * spazi iniziali e il segno tramite ft_handle_sign_and_spaces(), poi calcola
+ * il valore numerico usando ft_calculate_number(). Il risultato finale viene
+ * ritornato con il segno appropriato applicato.
+ *
+ * Questa implementazione personalizzata di atol separa le responsabilità
+ * della gestione del segno e degli spazi dalla conversione numerica. */
+
+long	ft_atol(const char *str)
 {
-    res = (res * 10) + (str[i] - 48);
-    i++;
-}
-
-
+	int		i;
+	int		sign;
+	long	result;
+	i = 0;
+	sign = ft_handle_sign_and_spaces(str, &i);
+	result = ft_calculate_number(str, &i, sign);
+	return (result * sign);
 }
