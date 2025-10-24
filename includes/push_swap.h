@@ -1,3 +1,13 @@
+#ifndef PUSH_SWAP_H
+#define PUSH_SWAP_H
+
+#include <stdlib.h>
+#include <unistd.h>
+#include <limits.h>
+#include "../libft/includes/libft.h"
+#include <stdio.h>
+
+
 // Definire struttura stack
 typedef struct s_stack
 {
@@ -13,3 +23,7 @@ typedef struct s_push_swap
     t_stack *b;
     int     total_numbers;
 }           t_push_swap;
+
+
+
+#endif
