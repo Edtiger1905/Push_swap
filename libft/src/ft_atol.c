@@ -51,7 +51,7 @@ static long	ft_calculate_number(const char *str, int *i, int sign)
 	result = 0;
 	while (str[*i] >= '0' && str[*i] <= '9')
 	{
-		if (result > (LONG_MAX - (str[*i] - '0') / 10))
+		if (result > (LONG_MAX - (str[*i] - '0')) / 10) 
 		{
 			if (sign == 1)
 				return (LONG_MAX);

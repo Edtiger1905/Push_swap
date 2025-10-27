@@ -7,7 +7,9 @@
 
 /*VARI FILE DA INSERIRE IN UN SECONDO MOMENTO*/
 
-
+long	ft_atol(const char *str);
+char	**ft_split(const char *s, char c);
+char	*ft_substr(const char *s, unsigned int start, size_t len);
 
 
 
