@@ -1,5 +1,5 @@
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 /* Processa gli spazi iniziali e il segno.
  *

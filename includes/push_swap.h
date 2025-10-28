@@ -8,22 +8,17 @@
 #include <stdio.h>
 
 
-// Definire struttura stack
-typedef struct s_stack
-{
-	int	*data;
-	int	size;
-	int	capacity;
-}		t_stack;
 
-// Definire struttura per due stack
-typedef struct s_push_swap
-{
-    t_stack *a;
-    t_stack *b;
-    int     total_numbers;
-}           t_push_swap;
-
+int     check_empty_input(char **argv);
+int     check_multiple_spaces(char **argv);
+int     check_errors(char **argv, int argc);
+int    check_signs(char **argv);
+int     check_multiple_signs(char **argv);
+int     check_integer_limits(char **argv);
+int     check_integer(char **argv);
+int     check_double_numbers(char **argv);
+void    exit_with_error();
+int     check_void_input(int argc);
 
 
 #endif

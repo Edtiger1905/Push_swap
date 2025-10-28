@@ -14,16 +14,10 @@ OBJ_DIR		= obj
 # AGGIUNGI QUI LE TUE FUNZIONI                                                #
 # ============================================================================ #
 
-SRCS		= 
-
-# Esempio di come aggiungere funzioni:
-# SRCS		= ft_atoi.c \
-#			  ft_strlen.c \
-#			  ft_strdup.c \
-#			  ft_split.c \
-#			  ft_isdigit.c
-
-# ============================================================================ #
+SRCS		= src/ft_atol.c \
+			  src/ft_split.c \
+			  src/ft_strchr.c \
+			  src/ft_substr.c
 
 # File oggetto
 OBJS		= $(SRCS:%.c=$(OBJ_DIR)/%.o)
@@ -43,7 +37,7 @@ $(NAME): $(OBJS)
 
 # Compilazione file oggetto
 $(OBJ_DIR)/%.o: %.c
-	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo "$(GREEN)✓$(RESET) Compilato: $<"
 
