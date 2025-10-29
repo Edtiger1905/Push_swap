@@ -17,6 +17,7 @@ RM			= rm -f
 SRC_DIR		= src
 OBJ_DIR		= obj
 LIBFT_DIR	= libft
+PRINTF_DIR	= ft_printf
 LIBFT		= $(LIBFT_DIR)/libft.a
 LIBFT_INC	= $(LIBFT_DIR)
 

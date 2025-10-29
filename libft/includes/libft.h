@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <limits.h>
+#include "../ft_printf/ft_printf.h"
 
 /*VARI FILE DA INSERIRE IN UN SECONDO MOMENTO*/
 

@@ -6,7 +6,7 @@ void stampa(int *array)
     int i = 0;
     while (array[i])
     {
-        printf("%d\n", array[i]);
+        ft_printf("%d\n", array[i]);
         i++;
     }
 }
@@ -22,7 +22,9 @@ int main(int argc, char **argv)
         write(2, "Error\n", 6);
         return (1);
     }
-    int *array = (int *)malloc(sizeof(int) * (argc - 1));
+    int *array;
+    array = (int *)malloc(sizeof(int) * (argc - 1));
+    
     while (argv[i])
     {
         array[i - 1] = (int)ft_atol(argv[i]);
@@ -30,7 +32,6 @@ int main(int argc, char **argv)
     }
 
     stampa(array);
-
     free(array);
     return (0);
 }

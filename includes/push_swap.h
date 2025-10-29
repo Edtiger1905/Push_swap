@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <limits.h>
 #include "../libft/includes/libft.h"
+#include "../libft/ft_printf/ft_printf.h"
 #include <stdio.h>
 
 
