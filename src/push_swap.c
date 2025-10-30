@@ -34,26 +34,6 @@ void assign_indices_simple(t_stack *a, int size)
     }
 }
 
-
-
-
-/*
-void assign_indices_simple(t_stack *a, int size)
-{
-    int i, j;
-    for (i = 0; i < size; i++)
-    {
-        int cnt = 0;
-        for (j = 0; j < size; j++)
-        {
-            if (a[j].value < a[i].value)
-                cnt++;
-        }
-        a[i].index = cnt;
-    }
-}
-    */
-
 t_stack *create_stack(int argc, char **argv)
 {
     t_stack *a;
@@ -74,10 +54,8 @@ t_stack *create_stack(int argc, char **argv)
 
 int main(int argc, char **argv)
 {
-    int i;
     t_stack *a;
 
-    i = 1;
     if (check_errors(argv, argc) == 1)
     {
         ft_printf("Error\n");
@@ -86,7 +64,8 @@ int main(int argc, char **argv)
     a = create_stack(argc, argv);
     
     assign_indices_simple(a, argc - 1);
-    
+
+    swap_two_numbers(a, argc);
     stampa(a, argc);
     free(a);
     return (0);
