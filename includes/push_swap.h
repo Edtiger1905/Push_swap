@@ -8,7 +8,11 @@
 #include "../libft/ft_printf/ft_printf.h"
 #include <stdio.h>
 
-
+typedef struct s_stack
+{
+    int value;
+    int index;
+} t_stack;
 
 int     check_empty_input(char **argv);
 int     check_multiple_spaces(char **argv);

@@ -10,19 +10,19 @@ BOLD		= \033[1m
 NAME		= push_swap
 CC			= cc
 CFLAGS		= -Wall -Wextra -Werror -g
-INCLUDES	= -I./includes -I./$(LIBFT_DIR)
+INCLUDES	= -I./includes -I./$(LIBFT_DIR)/includes -I./$(LIBFT_DIR)/ft_printf
 RM			= rm -f
 
 # ================================ PATHS ===================================== #
 SRC_DIR		= src
 OBJ_DIR		= obj
 LIBFT_DIR	= libft
-PRINTF_DIR	= ft_printf
+PRINTF_DIR	= $(LIBFT_DIR)/ft_printf
 LIBFT		= $(LIBFT_DIR)/libft.a
-LIBFT_INC	= $(LIBFT_DIR)
+PRINTF		= $(PRINTF_DIR)/libftprintf.a
 
 # =============================== SOURCES ==================================== #
-SRCS		= $(SRC_DIR)/main.c \
+SRCS		= $(SRC_DIR)/push_swap.c \
 			  $(SRC_DIR)/parser.c \
 			  $(SRC_DIR)/error_handling.c \
 			  $(SRC_DIR)/stack_operations.c \
@@ -42,9 +42,9 @@ OBJS		= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ_DIR) $(LIBFT) $(OBJS)
+$(NAME): $(OBJ_DIR) $(LIBFT) $(PRINTF) $(OBJS)
 	@echo "$(BLUE)$(BOLD)Linking $(NAME)...$(RESET)"
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(PRINTF) -o $(NAME)
 	@echo "$(GREEN)✓ $(NAME) compiled successfully!$(RESET)"
 	@echo ""
 
@@ -57,20 +57,27 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(LIBFT):
-	@echo "$(YELLOW)Building libft (ft_atoi, ft_split, etc.)...$(RESET)"
+	@echo "$(YELLOW)Building libft...$(RESET)"
 	@make -C $(LIBFT_DIR) --no-print-directory
-	@echo "$(GREEN)✓ libft ready (with ft_atoi.c, ft_split.c and more)$(RESET)"
+	@echo "$(GREEN)✓ libft ready$(RESET)"
+
+$(PRINTF):
+	@echo "$(YELLOW)Building ft_printf...$(RESET)"
+	@make -C $(PRINTF_DIR) --no-print-directory
+	@echo "$(GREEN)✓ ft_printf ready$(RESET)"
 
 clean:
 	@echo "$(RED)Cleaning object files...$(RESET)"
 	@$(RM) -r $(OBJ_DIR)
 	@make -C $(LIBFT_DIR) clean --no-print-directory
+	@make -C $(PRINTF_DIR) clean --no-print-directory
 	@echo "$(GREEN)✓ Clean complete$(RESET)"
 
 fclean: clean
 	@echo "$(RED)Removing executables...$(RESET)"
 	@$(RM) $(NAME)
 	@make -C $(LIBFT_DIR) fclean --no-print-directory
+	@make -C $(PRINTF_DIR) fclean --no-print-directory
 	@echo "$(GREEN)✓ Full clean complete$(RESET)"
 
 re: fclean all

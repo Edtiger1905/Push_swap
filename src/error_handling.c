@@ -6,7 +6,7 @@
 /*   By: epandele <epandele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 14:23:01 by epandele          #+#    #+#             */
-/*   Updated: 2025/10/28 15:36:30 by epandele         ###   ########.fr       */
+/*   Updated: 2025/10/29 11:38:53 by epandele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void exit_with_error()
 {
-    write(2, "Error\n", 6);
+    ft_printf("Error\n");
     exit(EXIT_FAILURE);
 }
 
@@ -163,10 +163,21 @@ int check_double_numbers(char **argv)
     }
     return (0);
 }
+int check_single_argument(int argc)
+{
+    int i;
 
+    i = 1;
+    if(argc <= 2)
+        return (1);
+    else
+        return (0);
+}
 int check_errors(char **argv, int argc)
 {
     if (check_empty_input(argv) == 1)
+        return (1);
+    if (check_single_argument(argc) == 1)
         return (1);
     if (check_multiple_spaces(argv) == 1)
         return (1);
