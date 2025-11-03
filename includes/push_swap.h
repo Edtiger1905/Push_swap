@@ -12,6 +12,7 @@ typedef struct s_stack
 {
     int value;
     int index;
+    int top;
     struct s_stack *next;
     
 } t_stack;
@@ -40,9 +41,28 @@ void    sb(t_stack *b);
 void    ss(t_stack *a, t_stack *b);
 
 /* Push operations */
+void    push(t_stack *a, t_stack *b);
+void    pa(t_stack *a, t_stack *b);
+void    pb(t_stack *a, t_stack *b);
 
+/* Rotate operations */
+void    rotate(t_stack **head);
+void    ra(t_stack *a);
+void    rb(t_stack *b);
+void    rr(t_stack *a, t_stack *b);
 
 /* Small algorithm functions */
 void    swap_two_numbers(t_stack *a, int argc);
+void    swap_three_numbers(t_stack *a, int argc);
+
+/* Utility functions */
+int     ft_is_sorted(t_stack *a);
+int     ft_find_index_max(t_stack *a);
+
+/* list manipulation functions */
+t_stack	*ft_lstnew(void *content);
+t_stack	*ft_lstlast(t_stack *lst);
+void	ft_lstadd_back(t_stack **lst, t_stack *new);
+void	ft_lstadd_front(t_stack **lst, t_stack *new);
 
 #endif
