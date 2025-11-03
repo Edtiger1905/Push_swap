@@ -22,11 +22,15 @@ void	swap_three_numbers(t_stack *a, int argc)
 	{
         if (ft_is_sorted(a))
         {
-        return ;
+            return ;
         }
 		if (a->index == ft_find_index_max(a))
         {
             ra(a);
+        }
+        if (a->next->index == ft_find_index_max(a))
+        {
+            
         }
         
 	}

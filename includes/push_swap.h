@@ -60,7 +60,7 @@ int     ft_is_sorted(t_stack *a);
 int     ft_find_index_max(t_stack *a);
 
 /* list manipulation functions */
-t_stack	*ft_lstnew(void *content);
+t_stack	*ft_lstnew(int value);
 t_stack	*ft_lstlast(t_stack *lst);
 void	ft_lstadd_back(t_stack **lst, t_stack *new);
 void	ft_lstadd_front(t_stack **lst, t_stack *new);

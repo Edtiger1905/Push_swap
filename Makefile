@@ -33,7 +33,8 @@ SRCS		= $(SRC_DIR)/push_swap.c \
 			  $(SRC_DIR)/algorithm_small.c \
 			  $(SRC_DIR)/algorithm_large.c \
 			  $(SRC_DIR)/utils.c \
-			  $(SRC_DIR)/free_memory.c
+			  $(SRC_DIR)/free_memory.c \
+			  $(SRC_DIR)/ft_lstadd_back.c \
 
 # =============================== OBJECTS ==================================== #
 OBJS		= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
