@@ -30,7 +30,7 @@ void	swap_three_numbers(t_stack *a, int argc)
         }
         if (a->next->index == ft_find_index_max(a))
         {
-            
+            rra(a);
         }
         
 	}
