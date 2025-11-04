@@ -32,6 +32,9 @@ void	swap_three_numbers(t_stack *a, int argc)
         {
             rra(a);
         }
-        
+        if (!ft_is_sorted(a))
+        {
+            sa(a);
+        }
 	}
 }

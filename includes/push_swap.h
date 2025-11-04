@@ -51,6 +51,13 @@ void    ra(t_stack *a);
 void    rb(t_stack *b);
 void    rr(t_stack *a, t_stack *b);
 
+/* Reverse rotate operations */
+void    reverse_rotate(t_stack **head);
+void    rra(t_stack *a);
+void    rrb(t_stack *b);
+void    rrr(t_stack *a, t_stack *b);
+
+
 /* Small algorithm functions */
 void    swap_two_numbers(t_stack *a, int argc);
 void    swap_three_numbers(t_stack *a, int argc);
