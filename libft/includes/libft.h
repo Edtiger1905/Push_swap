@@ -14,6 +14,8 @@ size_t  count_words(const char *s, char c);
 char	*ft_substr(const char *s, unsigned int start, size_t len);
 char    *ft_strchr(const char *s, int c);
 size_t    ft_strlen(const char *s);
+void	*ft_calloc(size_t count, size_t size);
+void	ft_bzero(void *s, size_t n);
 
 
 #endif

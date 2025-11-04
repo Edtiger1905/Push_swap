@@ -2,28 +2,23 @@
 #include "../includes/push_swap.h"
 
 void push(t_stack *src, t_stack *dst){
-    int i;
+   t_stack *node;
 
-    i = 0;
-
-    while (dst[i].top != 1 && i < INT_MAX)
-        i++;
-    if (i == INT_MAX)
-        return ;
-    dst[i].top = 0;
-    i = 0;
-    while (src[i].top != 1 && i < INT_MAX)
-        i++;
-    src[i].top = 1;
+   if (src == NULL|| dst == NULL || src == NULL)
+       return;
+    node = src;
+    src = node->next;
+    node->next = dst;
+    dst = node;
 }
 
-void pa(t_stack *a, t_stack *b)
+void pa(t_stack *b, t_stack *a)
 {
-    push(a, b);
+    push(b, a);
     ft_printf("pa\n");
 }
 void pb(t_stack *a, t_stack *b)
 {
-    push(b, a);
+    push(a, b);
     ft_printf("pb\n");
 }

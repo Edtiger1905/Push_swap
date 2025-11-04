@@ -1,74 +1,97 @@
+/* push_swap_list_main.c
+ * create_stack, assign_indices_simple e main adattate a linked list
+ * Si suppone che check_errors, ft_atol, ft_printf, swap_*, free_list siano
+ * implementate in altri file del progetto.
+ */
 
 #include "push_swap.h"
+#include <stdlib.h>
 
-/* void stampa(t_stack *a, int argc)
+#include <stdlib.h>
+
+static void	add_node_back(t_stack **head, t_stack **tail, t_stack *node)
 {
-    int i = 1;
+	if (!*head)
+	{
+		*head = node;
+		*tail = node;
+	}
+	else
+	{
+		(*tail)->next = node;
+		*tail = node;
+	}
+}
 
-    while (i < argc)
-    {
-        ft_printf("Value: %d Index: %d\n", a[i -1].value, a[i - 1].index);
-        i++;
-    }
-} */
-
-void assign_indices_simple(t_stack *a, int size)
+t_stack	*create_stack(int argc, char **argv)
 {
-    int i;
-    int j;
+	t_stack	*head;
+	t_stack	*tail;
+	t_stack	*node;
+	int		i;
+
+	head = NULL;
+	tail = NULL;
+	i = 1;
+	while (i < argc)
+	{
+		node = (t_stack *)malloc(sizeof(*node));
+		if (!node)
+		{
+			if (head)
+				free_list(head);
+			return (NULL);
+		}
+		node->value = (int)ft_atol(argv[i]);
+		node->index = 0;
+		node->next = NULL;
+		add_node_back(&head, &tail, node);
+		i++;
+	}
+	return (head);
+}
+void	assign_indices_simple(t_stack *a, int size)
+{
+	t_stack	*i_node;
+	t_stack	*j_node;
+
     int count;
-
-    i = 0;
-    while(i < size)
-    {
-        j = 0;
-        count = 0;
-        while (j < size)
-        {
-            if (a[j].value < a[i].value)
-                count++;
-            j++;
-        }
-        a[i].index = count;
-        i++;
-    }
+	(void)size;
+	i_node = a;
+	while (i_node)
+	{
+		count = 0;
+		j_node = a;
+		while (j_node)
+		{
+			if (j_node->value < i_node->value)
+				count++;
+			j_node = j_node->next;
+		}
+		i_node->index = count;
+		i_node = i_node->next;
+	}
 }
-
-t_stack *create_stack(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    t_stack *a;
-    int i;
-    
-    a = (t_stack *)malloc(sizeof(t_stack) * (argc - 1));
-    if (!a)
-        return (NULL);
-    i = 1;
-    while (i < argc)
-    {
-        a[i - 1].value = (int)ft_atol(argv[i]);
-        a[i - 1].index = 0;
-        i++;
-    }
-    return (a);
-}
+	t_stack	*a;
 
-int main(int argc, char **argv)
-{
-    t_stack *a;
-
-    if (check_errors(argv, argc) == 1)
-    {
-        ft_printf("Error\n");
-        return (1);
-    }
-    a = create_stack(argc, argv);
-    
-    assign_indices_simple(a, argc - 1);
-
-    if (argc == 3)
-        swap_two_numbers(a, argc);
-    else if (argc == 4)
-        swap_three_numbers(a, argc);
-    free(a);
-    return (0);
+	if (check_errors(argv, argc) == 1)
+	{
+		ft_printf("Error\n");
+		return (1);
+	}
+	a = create_stack(argc, argv);
+	if (!a && argc > 1)
+	{
+		ft_printf("Error\n");
+		return (1);
+	}
+	assign_indices_simple(a, argc - 1);
+	if (argc == 3)
+		swap_two_numbers(a, argc);
+	else if (argc == 4)
+		swap_three_numbers(a, argc);
+	free_list(a);
+	return (0);
 }

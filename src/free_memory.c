@@ -14,3 +14,14 @@ void free_split(char **array)
     }
     free(array);
 }
+void free_list(t_stack *head)
+{
+    t_stack *tmp;
+    
+    while (head)
+    {
+        tmp = head;
+        head = head->next;
+        free(tmp);
+    }
+}

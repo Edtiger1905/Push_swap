@@ -17,6 +17,9 @@ typedef struct s_stack
     
 } t_stack;
 
+/* main functions */
+int     push_swap(int argc, char **argv);
+
 /* Error checking functions */
 int     check_empty_input(char **argv);
 int     check_multiple_spaces(char **argv);
@@ -71,5 +74,11 @@ t_stack	*ft_lstnew(int value);
 t_stack	*ft_lstlast(t_stack *lst);
 void	ft_lstadd_back(t_stack **lst, t_stack *new);
 void	ft_lstadd_front(t_stack **lst, t_stack *new);
+
+/* Free memory functions */
+void    free_split(char **array);
+void    free_list(t_stack *head);
+
+
 
 #endif

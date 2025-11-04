@@ -3,11 +3,11 @@
 
 void swap(t_stack *stack)
 {
-    t_stack temp;
+    int temp;
 
-    temp = stack[0];
-    stack[0] = stack[1];
-    stack[1] = temp;
+    temp = stack->value;
+    stack->value = stack->next->value;
+    stack->next->value = temp;
 }
 
 void sa(t_stack *a)

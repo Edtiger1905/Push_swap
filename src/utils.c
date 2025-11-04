@@ -3,29 +3,33 @@
 
 int ft_is_sorted(t_stack *a)
 {
-    int i;
+    t_stack *current;
 
-    i = 0;
-    while (i < a[i].top - 1)
+    if (!a)
+        return 1; 
+
+    current = a;
+    while (current->next)
     {
-        if (a[i].value > a[i + 1].value)
-            return 1;
-        i++;
+        if (current->value > current->next->value)
+            return 0;               
+        current = current->next;
     }
-    return 0;
+    return 1;                       
 }
+
 int ft_find_index_max(t_stack *a)
 {
-    int i;
     int max_index;
+    t_stack *current;
 
-    i = 0;
-    max_index = a[0].index;
-    while (a[i].top != 1 && i < INT_MAX)
+    max_index = a->index;
+    current = a;
+    while (current)
     {
-        if (a[i].index > max_index)
-            max_index = a[i].index;
-        i++;
+        if (current->index > max_index)
+            max_index = current->index;
+        current = current->next;
     }
     return (max_index);
 }

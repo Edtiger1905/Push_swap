@@ -9,7 +9,7 @@ void	swap_two_numbers(t_stack *a, int argc)
         {
         return ;
         }
-		if (a[0].value > a[1].value)
+		if (a->index > a->next->index)
 		{
 			sa(a);
 		}
