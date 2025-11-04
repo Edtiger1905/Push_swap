@@ -1,48 +1,81 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: epandele <epandele@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/04 00:00:00 by epandele          #+#    #+#             */
+/*   Updated: 2025/11/04 16:37:52 by epandele         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-size_t count_words(const char *s, char c)
+size_t	count_words(const char *s, char c)
 {
-    size_t count;
+	size_t	count;
 
-    if (!*s)
-        return (0);
-    count = 0;
-    while (*s)
-    {
-        if (*s == c)
-            ++s;
-        if (*s)
-            ++count;
-        while (*s && *s != c)
-            ++s;
-    }
-    return (count);
+	if (!*s)
+		return (0);
+	count = 0;
+	while (*s)
+	{
+		while (*s == c && *s)
+			++s;
+		if (*s)
+		{
+			++count;
+			while (*s && *s != c)
+				++s;
+		}
+	}
+	return (count);
 }
-char **ft_split(const char *s, char c)
-{
-    char **array;
-    size_t i;
-    size_t len;
 
-    array = (char **)malloc((count_words(s, c) + 1) * sizeof(char *));
-    if (!s || !array)
-        return (0);
-    i = 0;
-    while (*s)
-    {
-        while (*s == c && *s)
-            ++s;
-        if (*s)
-        {
-            if(!ft_strchr(s, c))
-                len = ft_strlen(s);
-            else
-                len = ft_strchr(s, c) - s;
-            array[i++] = ft_substr(s, 0, len);
-            s += len;
-        }
-    }
+static void	free_array(char **array, size_t i)
+{
+	while (i > 0)
+	{
+		i--;
+		free(array[i]);
+	}
+	free(array);
+}
+
+char	**ft_split(const char *s, char c)
+{
+	char	**array;
+	size_t	i;
+	size_t	len;
+
+	if (!s)
+		return (NULL);
+	array = (char **)malloc((count_words(s, c) + 1) * sizeof(char *));
+	if (!array)
+		return (NULL);
+	i = 0;
+	
+    sub_split(s, c, array, i, len);
+	
     array[i] = NULL;
-    return (array);
+	return (array);
+}
+char *sub_split(const char *s, char c, char **array, size_t i, size_t len)
+{
+    while (*s)
+	{
+		while (*s == c && *s)
+			++s;
+		if (*s)
+		{
+			len = 0;
+			while (s[len] && s[len] != c)
+				len++;
+			array[i] = ft_substr(s, 0, len);
+			if (!array[i++])
+				return (free_array(array, i), NULL);
+			s += len;
+		}
+	}
 }
