@@ -1,21 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: epandele <epandele@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/04 00:00:00 by epandele          #+#    #+#             */
+/*   Updated: 2025/11/05 16:26:43 by epandele         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef LIBFT_H
-#define LIBFT_H
+# define LIBFT_H
 
-#include <stdlib.h>
-#include <unistd.h>
-#include <limits.h>
-#include "../ft_printf/ft_printf.h"
-
-/*VARI FILE DA INSERIRE IN UN SECONDO MOMENTO*/
+# include <stdlib.h>
+# include <unistd.h>
+# include <limits.h>
+# include "../ft_printf/ft_printf.h"
 
 long	ft_atol(const char *str);
-char	**ft_split(const char *s, char c);
-size_t  count_words(const char *s, char c);
+size_t	ft_strlen(const char *s);
+char	*ft_strchr(const char *s, int c);
 char	*ft_substr(const char *s, unsigned int start, size_t len);
-char    *ft_strchr(const char *s, int c);
-size_t    ft_strlen(const char *s);
+char	**ft_split(const char *s, char c);
+size_t	count_words(const char *s, char c);
 void	*ft_calloc(size_t count, size_t size);
 void	ft_bzero(void *s, size_t n);
-
 
 #endif

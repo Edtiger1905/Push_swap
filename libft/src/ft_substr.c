@@ -1,3 +1,4 @@
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -6,7 +7,7 @@
 /*   By: epandele <epandele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 00:00:00 by epandele          #+#    #+#             */
-/*   Updated: 2025/11/04 16:25:37 by epandele         ###   ########.fr       */
+/*   Updated: 2025/11/05 16:14:17 by epandele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +24,10 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	s_len = ft_strlen(s);
 	if (start >= s_len)
 	{
-		str = memory_allocation(str);
+		str = (char *)malloc(1);
+		if (str)
+			str[0] = '\0';
+		return (str);
 	}
 	if (len > s_len - start)
 		len = s_len - start;
@@ -38,11 +42,4 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	}
 	str[i] = '\0';
 	return (str);
-}
-char	*memory_allocation(char *str)
-{
-    		str = (char *)malloc(1);
-		if (str)
-			str[0] = '\0';
-		return (str);
 }
