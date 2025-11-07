@@ -6,11 +6,11 @@
 /*   By: epandele <epandele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 00:00:00 by epandele          #+#    #+#             */
-/*   Updated: 2025/11/07 12:06:12 by epandele         ###   ########.fr       */
+/*   Updated: 2025/11/07 15:39:47 by epandele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 static void	add_node_back(t_stack **head, t_stack **tail, t_stack *node)
 {
@@ -100,15 +100,8 @@ int	main(int argc, char **argv)
 		swap_three_numbers(&a, argc);
 	else if (argc == 5 || argc == 6)
 		handle_small_stack(&a, &b, argc);
+	else
+		radix_sort(&a, &b);
 	free_list(a);
 	return (0);
 }
-/* void print_stack(t_stack *stack)
-{
-	t_stack *current = stack;
-	while (current)
-	{
-		ft_printf("Value: %d, Index: %d\n", current->value, current->index);
-		current = current->next;
-	}
-} */

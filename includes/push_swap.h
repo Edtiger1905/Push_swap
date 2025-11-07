@@ -79,4 +79,9 @@ void	ft_lstadd_front(t_stack **lst, t_stack *new);
 void	free_split(char **array);
 void	free_list(t_stack *head);
 
+/* Large algorithm functions */
+void	assign_indices(t_stack *a);
+int		get_max_bits(int size);
+void	radix_sort(t_stack **a, t_stack **b);
+
 #endif

@@ -23,7 +23,6 @@ PRINTF		= $(PRINTF_DIR)/libftprintf.a
 
 # =============================== SOURCES ==================================== #
 SRCS		= $(SRC_DIR)/push_swap.c \
-			  $(SRC_DIR)/parser.c \
 			  $(SRC_DIR)/error_handling.c \
 			  $(SRC_DIR)/stack_operations.c \
 			  $(SRC_DIR)/push_operations.c \
