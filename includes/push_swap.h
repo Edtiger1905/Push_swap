@@ -59,10 +59,15 @@ void	rrr(t_stack **a, t_stack **b);
 /* Small algorithm functions */
 void	swap_two_numbers(t_stack **a, int argc);
 void	swap_three_numbers(t_stack **a, int argc);
+void	handle_small_stack(t_stack **a, t_stack **b, int argc);
+//void	print_stack(t_stack *stack);
 
 /* Utility functions */
 int		ft_is_sorted(t_stack *a);
 int		ft_find_index_max(t_stack *a);
+int		stack_size(t_stack *stack);
+int		find_min_position(t_stack *stack);
+void	move_min_to_top(t_stack **stack);
 
 /* List manipulation functions */
 t_stack	*ft_lstnew(int value);

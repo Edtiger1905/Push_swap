@@ -6,7 +6,7 @@
 /*   By: epandele <epandele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 00:00:00 by epandele          #+#    #+#             */
-/*   Updated: 2025/11/05 16:11:28 by epandele         ###   ########.fr       */
+/*   Updated: 2025/11/07 12:06:12 by epandele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,13 +79,15 @@ void	assign_indices_simple(t_stack *a, int size)
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
-
+	t_stack	*b;
+	
 	if (check_errors(argv, argc) == 1)
 	{
 		ft_printf("Error\n");
 		return (1);
 	}
 	a = create_stack(argc, argv);
+	b = NULL;
 	if (!a && argc > 1)
 	{
 		ft_printf("Error\n");
@@ -96,6 +98,17 @@ int	main(int argc, char **argv)
 		swap_two_numbers(&a, argc);
 	else if (argc == 4)
 		swap_three_numbers(&a, argc);
+	else if (argc == 5 || argc == 6)
+		handle_small_stack(&a, &b, argc);
 	free_list(a);
 	return (0);
 }
+/* void print_stack(t_stack *stack)
+{
+	t_stack *current = stack;
+	while (current)
+	{
+		ft_printf("Value: %d, Index: %d\n", current->value, current->index);
+		current = current->next;
+	}
+} */
