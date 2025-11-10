@@ -6,7 +6,7 @@
 /*   By: epandele <epandele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 00:00:00 by epandele          #+#    #+#             */
-/*   Updated: 2025/11/07 12:04:19 by epandele         ###   ########.fr       */
+/*   Updated: 2025/11/10 09:20:19 by epandele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,13 @@ void	swap_three_numbers(t_stack **a, int argc)
 			sa(a);
 	}
 }
-void	handle_small_stack(t_stack **a, t_stack **b,int argc)
+
+void	handle_small_stack(t_stack **a, t_stack **b, int argc)
 {
 	int	size;
 	int	pushes;
 
-	if(ft_is_sorted(*a))
+	if (ft_is_sorted(*a))
 		return ;
 	size = stack_size(*a);
 	if (size == 5)
@@ -63,9 +64,4 @@ void	handle_small_stack(t_stack **a, t_stack **b,int argc)
 	}
 	while (*b)
 		pa(a, b);
-	/* ft_printf("a: \n");
-	print_stack(*a);
-	ft_printf("b: \n");
-	print_stack(*b); */
 }
-

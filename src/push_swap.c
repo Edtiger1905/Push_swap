@@ -6,11 +6,17 @@
 /*   By: epandele <epandele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 00:00:00 by epandele          #+#    #+#             */
-/*   Updated: 2025/11/07 15:39:47 by epandele         ###   ########.fr       */
+/*   Updated: 2025/11/10 09:36:55 by epandele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+void	exit_with_error(void)
+{
+	ft_printf("Error\n");
+	exit(EXIT_FAILURE);
+}
 
 static void	add_node_back(t_stack **head, t_stack **tail, t_stack *node)
 {
@@ -80,19 +86,13 @@ int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
-	
+
 	if (check_errors(argv, argc) == 1)
-	{
-		ft_printf("Error\n");
-		return (1);
-	}
+		return (ft_printf("Error\n"), 1);
 	a = create_stack(argc, argv);
 	b = NULL;
 	if (!a && argc > 1)
-	{
-		ft_printf("Error\n");
-		return (1);
-	}
+		return (ft_printf("Error\n"), 1);
 	assign_indices_simple(a, argc - 1);
 	if (argc == 3)
 		swap_two_numbers(&a, argc);

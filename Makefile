@@ -24,7 +24,6 @@ PRINTF		= $(PRINTF_DIR)/libftprintf.a
 # =============================== SOURCES ==================================== #
 SRCS		= $(SRC_DIR)/push_swap.c \
 			  $(SRC_DIR)/error_handling.c \
-			  $(SRC_DIR)/stack_operations.c \
 			  $(SRC_DIR)/push_operations.c \
 			  $(SRC_DIR)/swap_operations.c \
 			  $(SRC_DIR)/rotate_operations.c \
@@ -34,6 +33,7 @@ SRCS		= $(SRC_DIR)/push_swap.c \
 			  $(SRC_DIR)/utils.c \
 			  $(SRC_DIR)/free_memory.c \
 			  $(SRC_DIR)/ft_lstadd_back.c \
+			  $(SRC_DIR)/checks_argument.c
 
 # =============================== OBJECTS ==================================== #
 OBJS		= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)

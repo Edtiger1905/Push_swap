@@ -6,17 +6,17 @@
 /*   By: epandele <epandele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 00:00:00 by epandele          #+#    #+#             */
-/*   Updated: 2025/11/05 16:26:43 by epandele         ###   ########.fr       */
+/*   Updated: 2025/11/07 15:48:00 by epandele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include "../ft_printf/ft_printf.h"
+# include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <limits.h>
-# include "../ft_printf/ft_printf.h"
 
 long	ft_atol(const char *str);
 size_t	ft_strlen(const char *s);

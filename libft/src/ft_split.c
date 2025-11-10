@@ -6,7 +6,7 @@
 /*   By: epandele <epandele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 00:00:00 by epandele          #+#    #+#             */
-/*   Updated: 2025/11/05 16:25:41 by epandele         ###   ########.fr       */
+/*   Updated: 2025/11/08 22:37:53 by epandele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,18 +59,15 @@ char	**ft_split(const char *s, char c)
 	{
 		while (*s == c && *s)
 			++s;
-		if (*s)
-		{
-			len = 0;
-			while (s[len] && s[len] != c)
-				len++;
-			array[i] = ft_substr(s, 0, len);
-			if (!array[i])
-				return (free_array(array, i), (char **)NULL);
-			i++;
-			s += len;
-		}
+		if (!*s)
+			break ;
+		len = 0;
+		while (s[len] && s[len] != c)
+			len++;
+		array[i] = ft_substr(s, 0, len);
+		if (!array[i++])
+			return (free_array (array, i - 1), (char **) NULL);
+		s += len;
 	}
-	array[i] = NULL;
-	return (array);
+	return (array[i] = NULL, array);
 }

@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: epandele <epandele@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/10 09:39:54 by epandele          #+#    #+#             */
+/*   Updated: 2025/11/10 09:40:14 by epandele         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
@@ -8,44 +19,44 @@ int	stack_size(t_stack *stack)
 	size = 0;
 	while (stack)
 	{
-		size++; 
+		size++;
 		stack = stack->next;
 	}
 	return (size);
 }
 
-int ft_is_sorted(t_stack *a)
+int	ft_is_sorted(t_stack *a)
 {
-    t_stack *current;
+	t_stack	*current;
 
-    if (!a)
-        return 1; 
-
-    current = a;
-    while (current->next)
-    {
-        if (current->value > current->next->value)
-            return 0;               
-        current = current->next;
-    }
-    return 1;                       
+	if (!a)
+		return (1);
+	current = a;
+	while (current->next)
+	{
+		if (current->value > current->next->value)
+			return (0);
+		current = current->next;
+	}
+	return (1);
 }
 
-int ft_find_index_max(t_stack *a)
+int	ft_find_index_max(t_stack *a)
 {
-    int max_index;
-    t_stack *current;
+	int		max_index;
+	t_stack	*current;
 
-    max_index = a->index;
-    current = a;
-    while (current)
-    {
-        if (current->index > max_index)
-            max_index = current->index;
-        current = current->next;
-    }
-    return (max_index);
+	max_index = a->index;
+	current = a;
+	while (current)
+	{
+		if (current->index > max_index)
+			max_index = current->index;
+		current = current->next;
+	}
+	return (max_index);
 }
+
 int	find_min_position(t_stack *stack)
 {
 	int		min_value;
@@ -94,5 +105,3 @@ void	move_min_to_top(t_stack **stack)
 		}
 	}
 }
-
-
