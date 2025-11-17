@@ -1,44 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algorithm_small.c                                  :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: epandele <epandele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 00:00:00 by epandele          #+#    #+#             */
-/*   Updated: 2025/11/17 10:48:27 by epandele         ###   ########.fr       */
+/*   Updated: 2025/11/10 09:16:03 by epandele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/libft.h"
 
-void	swap_two_numbers(t_stack **a, int argc)
+char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
-	if (argc == 3)
+	size_t	i;
+	size_t	s_len;
+	char	*str;
+
+	if (!s)
+		return (NULL);
+	s_len = ft_strlen(s);
+	if (start >= s_len)
+		return (ft_calloc(1, 1));
+	if (len > s_len - start)
+		len = s_len - start;
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (i < len && s[start + i])
 	{
-		if (ft_is_sorted(*a))
-			return ;
-		if ((*a)->index > (*a)->next->index)
-			sa(a);
+		str[i] = s[start + i];
+		i++;
 	}
-}
-
-void	swap_three_numbers(t_stack **a, int argc)
-{
-	if (argc == 4)
-	{
-		if (ft_is_sorted(*a))
-			return ;
-		if ((*a)->index == ft_find_index_max(*a))
-			ra(a);
-		if ((*a)->next->index == ft_find_index_max(*a))
-			rra(a);
-		if (!ft_is_sorted(*a))
-			sa(a);
-	}
-}
-
-void	handle_small_stack(t_stack **a, t_stack **b, int argc)
-{
-	if()
+	str[i] = '\0';
+	return (str);
 }
